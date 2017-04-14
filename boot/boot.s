@@ -18,8 +18,6 @@ dd MBOOT_CHECKSUM
 
 
 [GLOBAL start]			;入口地址
-[GLOBAL stack]			;栈地址
-[GLOBAL glb_mboot_ptr]
 [EXTERN kern_entry]
 
 start:
@@ -27,11 +25,7 @@ start:
 	mov esp, STACK_TOP 
 	mov ebp, 0 
 	and esp, 0FFFFFFF0H	
-	mov [glb_mboot_ptr], ebx
 	call kern_entry
-
-debug:
-	mov eax, start
 	
 stop:
 	hlt 			
@@ -41,7 +35,5 @@ stop:
 section .bss 			 
 stack:
 	resb 32768 	 	
-glb_mboot_ptr: 
-	resb 4
 
 STACK_TOP equ $-stack-1 	 

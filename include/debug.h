@@ -18,22 +18,18 @@
 // 初始化 Debug 信息
 void init_debug();
 
-// 打印当前的函数调用栈信息
-void panic(const char *msg);
-
-// 打印当前的段存器值
-void print_cur_status();
-
 // 内核的打印函数
 void printk(const char *format, ...);
 
 // 内核的打印函数 带颜色
 void printk_color(console_color back, console_color fore, const char *format, ...);
 
-
+// debug函数集
 void kernel_print_debug();
 
 void gdt_print_debug();
 
 void stack_print_debug();
+
+void debug_s_1();
 #endif 	// INCLUDE_DEBUG_H_
