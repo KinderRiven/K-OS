@@ -30,3 +30,17 @@ int strcmp(const char *str1, const char *str2)
 	
 	return 0;
 }
+
+void memset(void *dest, uint8_t val, uint32_t len)
+{
+	uint8_t *dst = (uint8_t *)dest;
+	
+	for(; len != 0; len--){
+		*dst ++ = val;
+	}
+}
+
+void bzero(void *dest, uint32_t len)
+{
+	memset(dest, 0, len);
+}

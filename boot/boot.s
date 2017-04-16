@@ -18,7 +18,10 @@ dd MBOOT_CHECKSUM
 
 
 [GLOBAL start]			;入口地址
+[GLOBAL stack]			;stack地址
+[GLOBAL s_top]			
 [EXTERN kern_entry]
+
 
 start:
 	cli  			
@@ -34,6 +37,9 @@ stop:
 
 section .bss 			 
 stack:
-	resb 32768 	 	
+	resb 32768
+STACK_TOP equ $-stack-1 	
+s_top:
 
-STACK_TOP equ $-stack-1 	 
+
+ 
