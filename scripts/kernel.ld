@@ -5,6 +5,7 @@ SECTIONS
 
 	. = 0x100000;
 
+	PROVIDE( kern_start = . );
 	.text :
 	{
 		*(.text)
@@ -18,7 +19,7 @@ SECTIONS
 		. = ALIGN(4096);
 	}
 	
-	/*2^322^32 */
+	/*2^32 */
 	.bss :
 	{
 		*(.bss)
@@ -35,7 +36,7 @@ SECTIONS
 		*(.stabstr)
 	 	. = ALIGN(4096);
 	}
-	
+	PROVIDE( kern_end = . );	
 	/DISCARD/ : { *(.comment) *(.eh_frame) }
 }
 

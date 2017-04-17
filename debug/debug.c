@@ -4,6 +4,7 @@
 #include "console.h"
 #include "format.h"
 #include "idt.h"
+#include "pmm.h"
 
 extern gdt_entry_t gdt_entries[GDT_LENGTH];
 extern gdt_ptr_t gdt_ptr;
@@ -30,8 +31,19 @@ void gdt_print_debug()
 
 }
 
-void interrupt_debug()
+void interrupt_run_debug()
 {
 	asm volatile("int $0x3");
 	asm volatile("int $0x4");
 }
+
+void memory_alloc_debug()
+{
+	uint32_t alloc_addr = NULL;	
+	uint8_t i;
+	
+	for(i = 0; i < 3; i++){
+		alloc_addr = pmm_alloc_page();
+		printk("Test Physical Memory: 0x%08X\n", alloc_addr);
+	}
+}	
