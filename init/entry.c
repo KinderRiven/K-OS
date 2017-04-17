@@ -4,6 +4,7 @@
 #include "gdt.h"
 #include "stack.h"
 #include "format.h"
+#include "timer.h"
 
 uint32_t g_debug0 = 0;
 uint32_t g_debug1 = 1;
@@ -55,7 +56,9 @@ int kern_entry()
 	//stack_print_debug();	
 	//gdt_print_debug();
 	interrupt_debug();
-	
+
+	init_timer(2000);
+	asm volatile ("sti");	
 	//main run
 	printk("Welcome to K'OS! ^_^ \n");
 	return 0;

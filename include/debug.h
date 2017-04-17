@@ -32,4 +32,6 @@ void gdt_print_debug();
 void stack_print_debug();
 
 void debug_s_1();
+
+void interrupt_debug();
 #endif 	// INCLUDE_DEBUG_H_
